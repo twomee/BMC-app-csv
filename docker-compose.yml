@@ -1,0 +1,8 @@
+version: '3'
+services:
+    bmc-csv:
+        build: .
+        ports:
+            - "5000:5000"
+
+#to run it: sudo docker-compose up
