@@ -1,0 +1,252 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "description": "API Documentation for the provided routes",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/get_histogram": {
+      "get": {
+        "tags": [
+          "get_histogram"
+        ],
+        "summary": "Get histogram data",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get_passenger_data": {
+      "get": {
+        "tags": [
+          "get_passenger_data"
+        ],
+        "summary": "Get passenger data",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "passengerId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "$ref": "#/components/schemas/Passenger"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get_requested_attribute": {
+      "post": {
+        "tags": [
+          "get_requested_attribute"
+        ],
+        "summary": "Get requested attribute",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "passengerId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "body",
+            "name": "attributeList",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get_all_passengers": {
+      "get": {
+        "tags": [
+          "get_all_passengers"
+        ],
+        "summary": "Get all passengers",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Passenger"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Passenger": {
+        "type": "object",
+        "properties": {
+          "PassengerId": {
+            "type": "string"
+          },
+          "Survived": {
+            "type": "string"
+          },
+          "Pclass": {
+            "type": "string"
+          },
+          "Name": {
+            "type": "string"
+          },
+          "Sex": {
+            "type": "string"
+          },
+          "Age": {
+            "type": "string"
+          },
+          "SibSp": {
+            "type": "string"
+          },
+          "Parch": {
+            "type": "string"
+          },
+          "Ticket": {
+            "type": "string"
+          },
+          "Fare": {
+            "type": "string"
+          },
+          "Cabin": {
+            "type": "string"
+          },
+          "Embarked": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
