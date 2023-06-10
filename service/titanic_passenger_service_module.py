@@ -1,5 +1,5 @@
 import csv
-
+import numpy as np
 from models.Passenger import Passenger
 
 
@@ -18,9 +18,19 @@ class TitanicPassengerService(object):
 
     def get_histogram_data(self):
         try:
-            return
+            fare_data = self._get_fare_data()
+            percentiles = np.percentile(fare_data, range(0, 101, int(len(fare_data)/10)))
+            counts = np.histogram(fare_data, percentiles)[0]
+            return {'percentiles': percentiles.tolist(), 'counts': counts.tolist()}
         except Exception as e:
             raise Exception(e)
+
+    def _get_fare_data(self):
+        fare_data = []
+        passengers_data = self.get_all_passengers()
+        for passenger in passengers_data:
+            fare_data.append(float(passenger.get("fare")))
+        return fare_data
 
     def get_passenger_data(self, passenger_id):
         try:

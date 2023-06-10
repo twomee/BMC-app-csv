@@ -14,8 +14,8 @@ def get_blueprint():
 @REQUEST_API.route('/get_histogram', methods=['GET'])
 def get_histogram():
     try:
-        service.get_histogram_data()
-        return json.dumps({'status': "success"}, default=list), 200, {'ContentType': 'application/json'}
+        histogram_data = service.get_histogram_data()
+        return json.dumps({'result': histogram_data}), 200, {'ContentType': 'application/json'}
     except Exception as e:
         return json.dumps({'status': "fail ==>" + f" {e}"}), 404, {'ContentType': 'application/json'}
 

@@ -3,6 +3,7 @@ import requests
 
 
 class CodeExample(object):
+    GET_HISTOGRAM_DATA_ENDPOINT = "http://127.0.0.1:5000/get_histogram"
     GET_PASSENGER_DATA_ENDPOINT = "http://127.0.0.1:5000/get_passenger_data"
     GET_REQUESTED_ATTRIBUTE_ENDPOINT = "http://127.0.0.1:5000/get_requested_attribute"
     GET_ALL_PASSENGERS_ENDPOINT = "http://127.0.0.1:5000/get_all_passengers"
@@ -15,9 +16,13 @@ class CodeExample(object):
         "Accept": USER_AGENT,
     }
 
+    def send_get_histogram_data_request(self):
+        response = requests.get(self.GET_HISTOGRAM_DATA_ENDPOINT)
+        return response
+
     def send_get_passenger_data_request(self, passenger_id):
         parameters = {"passengerId": f"{passenger_id}"}
-        response = requests.get(self.GET_PASSENGER_DATA_ENDPOINT, params=parameters, headers=self.HEADERS)
+        response = requests.get(self.GET_PASSENGER_DATA_ENDPOINT, params=parameters)
         return response
 
     def send_get_requested_attribute_request(self, passenger_id, attribute_list):
@@ -26,8 +31,12 @@ class CodeExample(object):
         return response
 
     def get_all_passengers_request(self):
-        response = requests.get(self.GET_ALL_PASSENGERS_ENDPOINT, headers=self.HEADERS)
+        response = requests.get(self.GET_ALL_PASSENGERS_ENDPOINT)
         return response
+
+    def get_histogram_data_example(self):
+        response = self.send_get_histogram_data_request()
+        print(json.loads(response.content))
 
     def get_passenger_data_example(self):
         passenger_id = 1
@@ -46,6 +55,7 @@ class CodeExample(object):
 
 
 code_example = CodeExample()
+code_example.get_histogram_data_example()
 code_example.get_passenger_data_example()
 code_example.get_requested_attribute_example()
 code_example.get_all_passengers_example()
