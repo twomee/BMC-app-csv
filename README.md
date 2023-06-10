@@ -10,3 +10,10 @@ there are few folders and files:
 6. app.py - the main file to run the project
 7. dockerfile and docker-compose - to run the containers together
 8. requierment.txt - the modules which are must to run the project
+
+endpoints:
+to run the project via postman:
+http://localhost:5000/<endpoint_you_want>
+
+swagger:
+http://localhost:5000/swagger/
