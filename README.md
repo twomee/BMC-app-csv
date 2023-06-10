@@ -12,6 +12,7 @@ there are few folders and files:
 8. requierment.txt - the modules which are must to run the project
 
 endpoints:
+
 to run the project via postman:
 http://localhost:5000/<endpoint_you_want>
 
