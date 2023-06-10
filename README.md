@@ -1,7 +1,7 @@
 # BMC-app-csv
 
 Instructions:
-ther eare few folders and files:
+there are few folders and files:
 1. models - contain the passenger model which is each row in the csv
 2. routes - all endpoints of the project
 3. service - the logic of the code
